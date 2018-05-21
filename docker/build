@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+docker build --pull \
+       -t imperialebola2018/ebola-orderly \
+       -f docker/Dockerfile \
+       .
