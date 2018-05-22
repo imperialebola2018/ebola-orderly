@@ -56,4 +56,6 @@ RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   earlyR \
   projections
 
+RUN install_remote "vimc/orderly@i1772"
+
 WORKDIR /orderly
