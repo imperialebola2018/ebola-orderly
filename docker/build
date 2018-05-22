@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
+TARGET=imperialebola2018/ebola-orderly:latest
 docker build --pull \
-       -t imperialebola2018/ebola-orderly \
+       -t $TARGET \
        -f docker/Dockerfile \
        .
