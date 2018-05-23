@@ -7,4 +7,4 @@ else
     shift
 fi
 
-docker exec -it ebola_server_orderly_1 $CMD $*
+docker exec -it ebolaserver_orderly_1 $CMD $*
