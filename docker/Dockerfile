@@ -33,6 +33,8 @@ RUN wget https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pando
 RUN apt-get update && apt-get install -y \
   libcurl4-openssl-dev \
   libmagick++-dev \
+  libssl-dev \
+  libsodium-dev \
   libxml2-dev
 
 
@@ -42,6 +44,7 @@ COPY bin /usr/local/bin/
 RUN install2.r --error \
   RColorBrewer \
   distcrete \
+  drat \
   dplyr \
   ggplot2 \
   knitr \
@@ -51,10 +54,12 @@ RUN install2.r --error \
 
 RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   EpiEstim \
+  cyphr \
   epitrix \
   incidence \
   earlyR \
-  projections
+  projections \
+  vaultr
 
 RUN install_remote "vimc/orderly@i1772"
 
