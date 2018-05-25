@@ -61,6 +61,6 @@ RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   projections \
   vaultr
 
-RUN install_remote "vimc/orderly@i1772"
+RUN install_remote "vimc/orderly@i1786"
 
 WORKDIR /orderly
