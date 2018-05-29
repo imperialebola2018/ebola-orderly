@@ -39,3 +39,5 @@ $EBOLA_SERVER export-orderly-volume --verbose $STAGING_EBOLA_OUTPUTS
 (cd $STAGING_EBOLA_SERVER &&
         vagrant ssh -c \
                 "./ebola-server/ebola-server import-orderly-volume --update /vagrant/ebola-outputs")
+
+echo "*** Success"
