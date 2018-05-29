@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+REAL_SERVER_HOSTNAME=fi--didelx03
+PATH_EBOLA_SERVER=/home/server/ebola-server
+EBOLA_SERVER="$PATH_EBOLA_SERVER/ebola-server"
+
+SHARED_EBOLA_OUTPUTS=/mnt/ebola2018/ebola-outputs
+
+if [ $(hostname -s) != "$REAL_SERVER_HOSTNAME" ]; then
+    echo "This must only be run on the 'real' reports server"
+    exit 1
+fi
+
+if [ ! -x $EBOLA_SERVER ]; then
+    echo "Server is not configured as expected - did not find ebola-server"
+    exit 1
+fi
+
+if [ ! -d $SHARED_EBOLA_OUTPUTS ]; then
+    echo "Shared drive not configured as expected"
+    exit 1
+fi
+
+$EBOLA_SERVER export-orderly-volume --verbose $SHARED_EBOLA_OUTPUTS
