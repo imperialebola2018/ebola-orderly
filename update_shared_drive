@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
+set -e
 
 REAL_SERVER_HOSTNAME=fi--didelx03
 PATH_EBOLA_SERVER=/home/server/ebola-server
 EBOLA_SERVER="$PATH_EBOLA_SERVER/ebola-server"
 
 SHARED_EBOLA_OUTPUTS=/mnt/ebola2018/ebola-outputs
+
+STAGING_EBOLA_SERVER=/home/server/staging/staging
+STAGING_EBOLA_OUTPUTS=$STAGING_EBOLA_SERVER/shared/ebola-outputs
 
 if [ $(hostname -s) != "$REAL_SERVER_HOSTNAME" ]; then
     echo "This must only be run on the 'real' reports server"
@@ -21,4 +25,17 @@ if [ ! -d $SHARED_EBOLA_OUTPUTS ]; then
     exit 1
 fi
 
+if [ ! -d $STAGING_EBOLA_SERVER ]; then
+    echo "Staging server not configured as expected"
+    exit 1
+fi
+
+echo "*** Updating shared drive"
 $EBOLA_SERVER export-orderly-volume --verbose $SHARED_EBOLA_OUTPUTS
+
+echo "*** Updating test instance"
+mkdir -p $STAGING_EBOLA_OUTPUTS
+$EBOLA_SERVER export-orderly-volume --verbose $STAGING_EBOLA_OUTPUTS
+(cd $STAGING_EBOLA_SERVER &&
+        vagrant ssh -c \
+                "./ebola-server/ebola-server import-orderly-volume --update /vagrant/ebola-outputs")
