@@ -1,4 +1,4 @@
-FROM vimc/orderly.server:master
+FROM vimc/orderly.server:i1800
 
 RUN apt-get update || apt-get update && apt-get install -y git
 
