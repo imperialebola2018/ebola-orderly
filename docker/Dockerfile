@@ -42,6 +42,7 @@ COPY bin /usr/local/bin/
 
 # Add new packages here (in alphabetical order)
 RUN install2.r --error \
+  Hmisc \
   RColorBrewer \
   distcrete \
   drat \
