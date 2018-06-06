@@ -31,7 +31,7 @@ if [ ! -d $STAGING_EBOLA_SERVER ]; then
 fi
 
 echo "*** Updating shared drive"
-$EBOLA_SERVER export-orderly-volume --verbose $SHARED_EBOLA_OUTPUTS
+$EBOLA_SERVER export-orderly-volume --verbose --mirror $SHARED_EBOLA_OUTPUTS
 
 echo "*** Updating test instance"
 mkdir -p $STAGING_EBOLA_OUTPUTS
