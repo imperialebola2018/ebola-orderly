@@ -2,18 +2,17 @@
 set -e
 
 REAL_SERVER_HOSTNAME=fi--didelx03
-PATH_EBOLA_SERVER=/home/server/ebola-server
+TESTING_SERVER_HOSTNAME=staging
+WHERE=$(hostname -s)
+
+PATH_EBOLA_SERVER=../ebola-server
 EBOLA_SERVER="$PATH_EBOLA_SERVER/ebola-server"
 
 SHARED_EBOLA_OUTPUTS=/mnt/ebola2018/ebola-outputs
+SHARED_EBOLA_OUTPUTS_TESTING=/mnt/ebola2018/ebola-outputs-testing
 
 STAGING_EBOLA_SERVER=/home/server/staging/staging
 STAGING_EBOLA_OUTPUTS=$STAGING_EBOLA_SERVER/shared/ebola-outputs
-
-if [ $(hostname -s) != "$REAL_SERVER_HOSTNAME" ]; then
-    echo "This must only be run on the 'real' reports server"
-    exit 1
-fi
 
 if [ ! -x $EBOLA_SERVER ]; then
     echo "Server is not configured as expected - did not find ebola-server"
@@ -22,6 +21,16 @@ fi
 
 if [ ! -d $SHARED_EBOLA_OUTPUTS ]; then
     echo "Shared drive not configured as expected"
+    exit 1
+fi
+
+if [ $WHERE = $TESTING_SERVER_HOSTNAME ]; then
+    echo "This is the testing server - only updating ebola-outputs-testing"
+    $EBOLA_SERVER export-orderly-volume --verbose --mirror \
+                  $SHARED_EBOLA_OUTPUTS_TESTING
+    exit 0
+elif [ $WHERE != "$REAL_SERVER_HOSTNAME" ]; then
+    echo "Unexpected host"
     exit 1
 fi
 
