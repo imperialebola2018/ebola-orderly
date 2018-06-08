@@ -1,4 +1,4 @@
-FROM vimc/orderly.server:i1800
+FROM vimc/orderly.server:master
 
 RUN apt-get update || apt-get update && apt-get install -y git
 
@@ -60,9 +60,8 @@ RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   epitrix \
   incidence \
   earlyR \
+  orderly \
   projections \
   vaultr
-
-RUN install_remote "vimc/orderly@i1786"
 
 WORKDIR /orderly
