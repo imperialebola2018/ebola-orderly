@@ -1,4 +1,4 @@
-FROM vimc/orderly.server:i1800
+FROM vimc/orderly.server:master
 
 RUN apt-get update || apt-get update && apt-get install -y git
 
@@ -44,6 +44,7 @@ COPY bin /usr/local/bin/
 RUN install2.r --error \
   Hmisc \
   RColorBrewer \
+  cyphr \
   distcrete \
   drat \
   dplyr \
@@ -52,17 +53,14 @@ RUN install2.r --error \
   pander \
   readxl \
   rmarkdown \
-  tidyr
+  tidyr \
+  vaultr
 
 RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   EpiEstim \
-  cyphr \
   epitrix \
   incidence \
   earlyR \
-  projections \
-  vaultr
-
-RUN install_remote "vimc/orderly@i1786"
+  projections
 
 WORKDIR /orderly
