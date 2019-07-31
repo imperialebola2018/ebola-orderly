@@ -44,15 +44,22 @@ COPY bin /usr/local/bin/
 RUN install2.r --error \
   Hmisc \
   RColorBrewer \
+  binom \
   distcrete \
-  drat \
   dplyr \
+  drat \
   ggplot2 \
+  ggpubr \
+  ggthemes \
   knitr \
+  lubridate \
   pander \
   readxl \
   rmarkdown \
-  tidyr
+  rstan \
+  tidyr \
+  tidyverse \
+  zoo
 
 RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   EpiEstim \
