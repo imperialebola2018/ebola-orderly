@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec -it ebolaserver_orderly_1 orderly $*
+docker exec -it ebolaserver_orderly orderly $*
