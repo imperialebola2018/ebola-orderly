@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+HERE=$(dirname $0)
+
+$HERE/build
+
+# NOTE: This requires secrets that can be obtained from the vimc vault
+# from
+#
+#   vault read secret/vimc-robot/dockerhub
+#
+# and added to travis here:
+#
+#   https://travis-ci.org/imperialebola2018/ebola-orderly/settings
+if [ ! -z $DOCKER_PASSWORD ]; then
+    echo $DOCKER_PASSWORD | \
+        docker login -u $DOCKER_USERNAME --password-stdin
+    $HERE/push
+fi
