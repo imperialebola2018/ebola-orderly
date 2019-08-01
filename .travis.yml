@@ -1,0 +1,6 @@
+# The travis 'minimal' image includes docker
+# https://docs.travis-ci.com/user/languages/minimal-and-generic/
+language: minimal
+dist: xenial
+script:
+  - ./docker/travis
