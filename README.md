@@ -29,3 +29,7 @@ Get a shell on the container with
 ```
 ./shell
 ```
+
+## Building the image
+
+The image is built on the VIMC teamcity server, as it is too large to build on travis now (build times out after an hour).
