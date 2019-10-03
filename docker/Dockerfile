@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y \
   libmagick++-dev \
   libssl-dev \
   libsodium-dev \
+  libudunits2-dev \
+  libv8-dev \
   libxml2-dev
 
 
@@ -44,7 +46,10 @@ COPY bin /usr/local/bin/
 RUN install2.r --error \
   Hmisc \
   RColorBrewer \
+  Rfast \
   binom \
+  concaveman \
+  deming \
   distcrete \
   dplyr \
   drat \
@@ -52,13 +57,16 @@ RUN install2.r --error \
   ggpubr \
   ggthemes \
   knitr \
+  lme4 \
   lubridate \
+  openxlsx \
   pander \
   readxl \
   rmarkdown \
   rstan \
   tidyr \
   tidyverse \
+  waffle \
   zoo
 
 RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
