@@ -32,6 +32,7 @@ RUN wget https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pando
 # alphabetical order)
 RUN apt-get update && apt-get install -y \
   libcurl4-openssl-dev \
+  libgdal-dev \
   libgsl0-dev \
   libmagick++-dev \
   libssl-dev \
