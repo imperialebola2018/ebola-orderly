@@ -64,7 +64,6 @@ RUN install2.r --error \
   pander \
   readxl \
   rmarkdown \
-  rstan \
   tidyr \
   tidyverse \
   waffle \
