@@ -67,6 +67,7 @@ RUN install2.r --error \
   tidyr \
   tidyverse \
   waffle \
+  wesanderson \
   zoo
 
 RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
