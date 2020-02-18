@@ -75,7 +75,6 @@ RUN install_packages --repo "https://imperialebola2018.github.io/drat" \
   epitrix \
   incidence \
   earlyR \
-  orderly \
   projections \
   vaultr
 
