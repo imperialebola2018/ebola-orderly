@@ -1,5 +1,7 @@
 # ebola-orderly
 
+[![Build status](https://badge.buildkite.com/e811658780dce01393cd74ba656b728f0656b2de9edfbe2426.svg?branch=master)](https://buildkite.com/mrc-ide/ebola-orderly)
+
 This is the docker container for [ebola-outputs](https://github.com/imperialebola2018/ebola-outputs).  It exists outside that repository because otherwise every new report we use risks dragging in a new LaTeX installation.
 
 This repo is a fork of [`montagu-orderly`](https://github.com/vimc/montagu-orderly) with minor modifications
@@ -32,4 +34,4 @@ Get a shell on the container with
 
 ## Building the image
 
-The image is built on the [VIMC teamcity server](http://teamcity.montagu.dide.ic.ac.uk:8111/viewType.html?buildTypeId=montagu_Orderly_EbolaOrderly_Build), as it is too large to build on travis now (build times out after an hour).
+The image is built on [Buildkite](https://buildkite.com/mrc-ide/ebola-orderly), as it is too large to build on travis now (build times out after an hour).
